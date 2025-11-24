@@ -1,28 +1,38 @@
-package com.example.myapplication // <--- 确认包名
+package com.example.myapplication
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.telephony.SmsMessage
 
 class SmsReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
-        if (!GlobalState.isRunning.value) return
-
         if (intent.action == "android.provider.Telephony.SMS_RECEIVED") {
+            // 这里不做去重，只管接收，去重交给 GlobalState 处理
+
             val bundle = intent.extras
             if (bundle != null) {
-                val pdus = bundle.get("pdus") as Array<*>
-                for (pdu in pdus) {
-                    val sms = SmsMessage.createFromPdu(pdu as ByteArray)
-                    val sender = sms.originatingAddress ?: "Unknown"
-                    val msgBody = sms.messageBody ?: ""
+                try {
+                    val pdus = bundle.get("pdus") as? Array<*> ?: return
+                    val format = bundle.getString("format")
 
-                    GlobalState.addLog("收到短信: 来自 $sender")
+                    for (pdu in pdus) {
+                        val sms = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            SmsMessage.createFromPdu(pdu as ByteArray, format)
+                        } else {
+                            SmsMessage.createFromPdu(pdu as ByteArray)
+                        }
 
-                    // 调用 GlobalState 里的公共发送方法
-                    GlobalState.sendToDingTalk(sender, msgBody)
+                        val sender = sms.originatingAddress ?: "Unknown"
+                        val msgBody = sms.messageBody ?: ""
+
+                        // 调用 GlobalState 发送（那里有去重逻辑）
+                        GlobalState.sendToDingTalk(sender, msgBody)
+                    }
+                } catch (e: Exception) {
+                    GlobalState.addLog("解析错误: ${e.message}")
                 }
             }
         }

@@ -4,6 +4,7 @@
 
 ## 📸 界面预览
 
+![](C:\Users\warmaofficial\Desktop\qq_pic_merged_1763966102805.jpg)
 ## ✨ 主要功能
 *   **短信监听**：实时捕获系统短信消息。
 *   **钉钉转发**：支持自定义钉钉机器人 Webhook，支持 Markdown 格式推送。
