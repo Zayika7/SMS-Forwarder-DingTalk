@@ -34,4 +34,4 @@
 本项目仅供学习交流使用。请勿用于非法用途。开发者不对使用本软件产生的任何后果负责。
 
 ---
-Created by [Your Name]
+Created by [Zayika7]
