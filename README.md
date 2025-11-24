@@ -3,6 +3,7 @@
 > 一个极客风格的 Android 短信转发工具，支持将手机短信实时转发到钉钉群机器人。
 
 ## 📸 界面预览
+<img width="500" height="1000" alt="image" src="https://github.com/user-attachments/assets/0d6f624a-faf2-439b-8371-e6074d0ab732" />
 
 ![](C:\Users\warmaofficial\Desktop\qq_pic_merged_1763966102805.jpg)
 ## ✨ 主要功能
@@ -34,4 +35,4 @@
 本项目仅供学习交流使用。请勿用于非法用途。开发者不对使用本软件产生的任何后果负责。
 
 ---
-Created by [Your Name]
+Created by [Zayika7]
