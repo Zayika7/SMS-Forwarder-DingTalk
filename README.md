@@ -3,6 +3,7 @@
 > 一个极客风格的 Android 短信转发工具，支持将手机短信实时转发到钉钉群机器人。
 
 ## 📸 界面预览
+<img width="500" height="1000" alt="image" src="https://github.com/user-attachments/assets/0d6f624a-faf2-439b-8371-e6074d0ab732" />
 
 ## ✨ 主要功能
 *   **短信监听**：实时捕获系统短信消息。
